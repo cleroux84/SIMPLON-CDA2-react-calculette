@@ -18,30 +18,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-  
+        <header className="App-header">  
           <section>
-            <div class='p-5'>
+            <div class='p-5 test'>
               <Form>
-
                 <Form.Group>
                   <InputNumber placeholder= 'number 1' onChange={e => this.props.updateInput1(e.target.value)} value={this.props.number1} />
-                  
                   <Operation  onChange={e => this.props.changeOperator(e.target.value)} />
-    
                   <InputNumber placeholder= 'number 2' onChange={e => this.props.updateInput2(e.target.value)} value={this.props.number2} />
-
                 </Form.Group>
-              
-    
                 <div class= 'd-flex justify-content-center'>
                   <ButtonComponent value='Calcul' onClick= {(this.props.calculate)}/>
                   <ButtonComponent value= 'Random' onClick={this.props.updateInput1Withthunk}/>
                 </div>
-    
-                <Result finalResult={this.props.finalResult}/>
-
+                {!this.props.loader ? <Result finalResult={this.props.finalResult}/> : <h1>It is loading</h1>}
+                {/*  <Result finalResult={this.props.finalResult}/> */}
               </Form>
             </div>
             
@@ -58,7 +49,8 @@ const mapStateToProps = (state) => {
       number1: state.calcReducer.number1,
       number2: state.calcReducer.number2,
       operator: state.calcReducer.operator,
-      finalResult: state.calcReducer.result
+      finalResult: state.calcReducer.result,
+      loader: state.calcReducer.loader
   }
 }
 

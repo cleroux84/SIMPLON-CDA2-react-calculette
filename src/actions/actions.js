@@ -43,12 +43,11 @@ export const updateLoader = (value)=>{
 
 export const updateInput1Withthunk = () => {
     return  async (dispatch) => {
-        //dispatch(updateLoader(true));
+        dispatch(updateLoader(true));
         const response = await fetch ('http://www.randomnumberapi.com/api/v1.0/random?min=100&max=1000&count=1');
         const number = await response.json();
-        //dispatch(updateLoader(false));
+        dispatch(updateLoader(false));
         dispatch(updateInput1(number));
-        return number
     }
 }
 

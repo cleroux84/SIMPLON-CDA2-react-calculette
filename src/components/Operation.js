@@ -13,8 +13,8 @@ class Operation extends Component {
     render() {
         return (
             <Form.Control as="select" onChange={this.props.onChange}>
-                <option value=''>Choisir une opération</option>
-                {this.operations.map(operation => <option value= {operation.sigle}>{operation.name}</option>)}
+                <option value=''>Opérateurs</option>
+                {this.operations.map(operation => <option value= {operation.sigle}>{operation.sigle}</option>)}
             </Form.Control>
         )
     }
